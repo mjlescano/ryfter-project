@@ -1,6 +1,6 @@
 # Planning
 
-Project requirements can be seen at [docs/ryfter-project.pdf](docs/ryfter-project.pdf).
+Project requirements can be seen at [docs/ryfter-project.pdf](ryfter-project.pdf).
 
 ## References / Alternatives
 
@@ -54,7 +54,7 @@ The objective of the MVP is to have an interface which will allow the **user** _
 
 ### Features
 
-Being the [requirements](docs/ryfter-project.pdf) already defined, these are the features necessary for the first release:
+Being the [requirements](ryfter-project.pdf) already defined, these are the features necessary for the first release:
 
 The user will land on the form creation page, and:
 
@@ -62,7 +62,7 @@ The user will land on the form creation page, and:
 - [ ] The user should be able to add a Form Item, which could be a **Section Title** or a **Question**
 - [ ] A Form Item should be deletable
 - [ ] A Form Item should be draggable to change it's order
-- [ ] A Question could be of any type and have the options defined at the [requirements](docs/ryfter-project.pdf)
+- [ ] A Question could be of any type and have the options defined at the [requirements](ryfter-project.pdf)
 - [ ] The form should be submittable, but must have at least 1 Question
   * The submit event should POST the form data to https://requestb.in
 - [ ] The Redux state should be saved on LocalStorage on every state change
@@ -135,7 +135,7 @@ As an alternative implementation I propose to define a Section dynamically. So, 
 
 For example, Wikipedia sections:
 
-![Wikipedia Sections](docs/wikipedia-section.gif)
+![Wikipedia Sections](wikipedia-section.gif)
 
 The implementation should follow these rules:
 * A section could be foldable
