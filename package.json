@@ -1,0 +1,23 @@
+{
+  "name": "ryfter-project",
+  "version": "1.0.0",
+  "description": "Self-assesment form builder for Ryfter.com",
+  "main": "index.js",
+  "private": true,
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjlescano/ryfter-project.git"
+  },
+  "author": "mjlescano",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/mjlescano/ryfter-project/issues"
+  },
+  "homepage": "https://github.com/mjlescano/ryfter-project#readme"
+}
