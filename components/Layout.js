@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Title from './Title'
-import Footer from './Footer'
+import Title from './title'
+import Footer from './footer'
 
 export default (props) => (
   <div>
