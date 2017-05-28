@@ -66,23 +66,49 @@ export default (props) => (
         width: 100%;
       }
 
-      .container-paper {
+      .layout-wrapper {
         padding-top: 3rem;
         padding-bottom: 3rem;
       }
 
       .paper {
-        padding-top: 1.2rem;
-        padding-bottom: 1.2rem;
         border: 1px solid #DEE0E5;
         border-radius: .2rem;
         width: 100%;
         background-color: #FFFFFF;
       }
 
+      .paper-wrapper {
+        padding-top: 1.875rem;
+        padding-bottom: 1.875rem;
+      }
+
       .paper-row {
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
+        padding-left: 1.875rem;
+        padding-right: 1.875rem;
+      }
+
+      .paper-title {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+        text-align: center;
+        line-height: 1.875rem;
+      }
+
+      .paper-subtitle {
+        margin: 0;
+        color: #A4A5AD;
+        font-size: .75rem;
+        font-weight: 300;
+        text-align: center;
+        line-height: 1.875rem;
+      }
+
+      .paper > hr {
+        margin: 0;
+        border: 0;
+        border-top: 1px solid #DEE0E5;
       }
       `}</style>
     {props.children}
