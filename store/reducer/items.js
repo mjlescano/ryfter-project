@@ -10,8 +10,6 @@ const reducers = {
     }),
     {
       selected: true,
-      kind: 'question',
-      responseType: 'short-text',
       ...payload,
       id: shortid.generate()
     }

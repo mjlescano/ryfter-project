@@ -1,6 +1,6 @@
 import Button from '../button'
 
-export default () => (
+export default ({ addSection }) => (
   <div className='form-actions paper-wrapper paper-row'>
     <style jsx>{`
       .form-actions {
@@ -11,7 +11,7 @@ export default () => (
         margin: 0 5px;
       }
     `}</style>
-    <Button>Add section</Button>
+    <Button onClick={addSection}>Add section</Button>
     <Button>Add question</Button>
   </div>
 )
