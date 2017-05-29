@@ -1,17 +1,19 @@
 import { nextConnect } from '../store'
-import { addSection } from '../store/actions'
+import { addSection, moveItem, grabItem } from '../store/actions'
 import Layout from '../components/layout'
 import Title from '../components/title'
 import Button from '../components/button'
 import FormTitle from '../components/form/title'
 import FormActions from '../components/form/actions'
-import FormItem from '../components/form/item'
+import FormItems from '../components/form/items'
 
 const Form = ({
   job,
   company,
   items,
-  addSection
+  addSection,
+  moveItem,
+  grabItem
 }) => (
   <Layout>
     <Title>Self-Assesment Form</Title>
@@ -24,7 +26,10 @@ const Form = ({
       <div className='paper'>
         <FormTitle job={job} company={company} />
         <hr />
-        {items.map((item) => <FormItem key={item.id} item={item} />)}
+        <FormItems
+          onMove={moveItem}
+          onGrab={grabItem}
+          items={items} />
         <FormActions addSection={addSection} />
         <hr />
         <div className='submit-section paper-wrapper paper-row'>
@@ -36,5 +41,7 @@ const Form = ({
 )
 
 export default nextConnect((state) => state, (dispatch) => ({
-  addSection: () => dispatch(addSection())
+  addSection: () => dispatch(addSection()),
+  moveItem: (data) => dispatch(moveItem(data)),
+  grabItem: (data) => dispatch(grabItem(data))
 }))(Form)

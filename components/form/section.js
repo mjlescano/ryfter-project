@@ -1,4 +1,4 @@
-export default ({ title, description }) => (
+export default ({ id, title, description }) => (
   <div>
     <style jsx>{`
       h2 {
@@ -18,7 +18,7 @@ export default ({ title, description }) => (
         line-height: 1.875rem;
       }
     `}</style>
-    <h2>{title || 'New Section'}</h2>
+    <h2>{title || 'New Section ' + id}</h2>
     <p>{description || 'Some section description'}</p>
   </div>
 )
