@@ -5,19 +5,19 @@ import FormItem from './item'
 
 const FormItems = ({
   items,
-  moveItem,
-  grabItem
+  grabItem,
+  moveItem
 }) => {
   const handleSortStart = ({ index }) => {
     // Hack to have the grab hand when moving an item
     document.body.classList.add('item-grabbed')
-    moveItem({ index })
+    grabItem({ index })
   }
 
   const handleSortEnd = ({ oldIndex, newIndex }) => {
     // Hack to have the grab hand when moving an item
     document.body.classList.remove('item-grabbed')
-    grabItem({ oldIndex, newIndex })
+    moveItem({ oldIndex, newIndex })
   }
 
   return (
