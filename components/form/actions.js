@@ -1,6 +1,8 @@
+import { connect } from 'react-redux'
+import { addSection } from '../../store/actions'
 import Button from '../button'
 
-export default ({ addSection }) => (
+const FormActions = ({ addSection }) => (
   <div className='form-actions paper-wrapper paper-row'>
     <style jsx>{`
       .form-actions {
@@ -15,3 +17,7 @@ export default ({ addSection }) => (
     <Button>Add question</Button>
   </div>
 )
+
+export default connect(null, (dispatch) => ({
+  addSection: (data) => dispatch(addSection(data))
+}))(FormActions)

@@ -1,12 +1,17 @@
+import { connect } from 'react-redux'
 import classNames from 'classnames'
 import { SortableHandle } from 'react-sortable-hoc'
+import { selectItem } from '../../store/actions'
 import Section from './section'
 
 const kinds = {
   section: Section
 }
 
-export default ({ item, onSelect }) => {
+const FormItem = ({
+  item,
+  selectItem
+}) => {
   const {
     kind,
     grabbed,
@@ -23,12 +28,10 @@ export default ({ item, onSelect }) => {
     { selected }
   )
 
-  const handleClick = () => onSelect({ id: item.id })
+  const handleClick = () => selectItem({ id: item.id })
 
   return (
-    <div
-      className={className}
-      onClick={handleClick}>
+    <div className={className} onClick={handleClick}>
       <style jsx>{`
         .form-item {
           position: relative;
@@ -66,10 +69,14 @@ export default ({ item, onSelect }) => {
         }
       `}</style>
       <Grabber />
-      <Item {...item} />
+      <Item item={item} />
     </div>
   )
 }
+
+export default connect(null, (dispatch) => ({
+  selectItem: (data) => dispatch(selectItem(data))
+}))(FormItem)
 
 const Grabber = SortableHandle(({ active }) => (
   <div className='grabber'>

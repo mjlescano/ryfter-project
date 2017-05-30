@@ -1,4 +1,6 @@
-export default ({ job, company }) => (
+import { connect } from 'react-redux'
+
+const FormTitle = ({ job, company }) => (
   <div className='paper-wrapper paper-row'>
     <h1 className='paper-title'>
       Self-Assesment Form
@@ -8,3 +10,5 @@ export default ({ job, company }) => (
     </h2>
   </div>
 )
+
+export default connect(({ job, company }) => ({ job, company }))(FormTitle)

@@ -1,5 +1,4 @@
 import { nextConnect } from '../store'
-import { addSection, moveItem, grabItem, selectItem } from '../store/actions'
 import Layout from '../components/layout'
 import Title from '../components/title'
 import Button from '../components/button'
@@ -7,15 +6,7 @@ import FormTitle from '../components/form/title'
 import FormActions from '../components/form/actions'
 import FormItems from '../components/form/items'
 
-const Form = ({
-  job,
-  company,
-  items,
-  addSection,
-  moveItem,
-  grabItem,
-  selectItem
-}) => (
+const Form = () => (
   <Layout>
     <Title>Self-Assesment Form</Title>
     <style jsx>{`
@@ -25,14 +16,10 @@ const Form = ({
     `}</style>
     <div className='container layout-wrapper'>
       <div className='paper'>
-        <FormTitle job={job} company={company} />
+        <FormTitle />
         <hr />
-        <FormItems
-          onMove={moveItem}
-          onGrab={grabItem}
-          onSelect={selectItem}
-          items={items} />
-        <FormActions addSection={addSection} />
+        <FormItems />
+        <FormActions />
         <hr />
         <div className='submit-section paper-wrapper paper-row'>
           <Button type='primary'>Submit</Button>
@@ -42,9 +29,4 @@ const Form = ({
   </Layout>
 )
 
-export default nextConnect((state) => state, (dispatch) => ({
-  addSection: () => dispatch(addSection()),
-  moveItem: (data) => dispatch(moveItem(data)),
-  grabItem: (data) => dispatch(grabItem(data)),
-  selectItem: (data) => dispatch(selectItem(data))
-}))(Form)
+export default nextConnect()(Form)

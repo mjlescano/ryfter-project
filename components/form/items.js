@@ -1,22 +1,23 @@
+import { connect } from 'react-redux'
 import { SortableContainer, SortableElement } from 'react-sortable-hoc'
+import { moveItem, grabItem } from '../../store/actions'
 import FormItem from './item'
 
-export default ({
+const FormItems = ({
   items,
-  onMove,
-  onGrab,
-  onSelect
+  moveItem,
+  grabItem
 }) => {
   const handleSortStart = ({ index }) => {
     // Hack to have the grab hand when moving an item
     document.body.classList.add('item-grabbed')
-    onGrab({ index })
+    moveItem({ index })
   }
 
   const handleSortEnd = ({ oldIndex, newIndex }) => {
     // Hack to have the grab hand when moving an item
     document.body.classList.remove('item-grabbed')
-    onMove({ oldIndex, newIndex })
+    grabItem({ oldIndex, newIndex })
   }
 
   return (
@@ -28,7 +29,7 @@ export default ({
           cursor: -webkit-grabbing !important;
         }
       `}</style>
-      <FormItems
+      <FormItemsList
         lockAxis={'y'}
         lockOffset={'15%'}
         helperClass='grabbed'
@@ -36,19 +37,22 @@ export default ({
         useDragHandle
         onSortStart={handleSortStart}
         onSortEnd={handleSortEnd}
-        onSelect={onSelect}
         items={items} />
     </div>
   )
 }
 
-const FormItems = SortableContainer(({ items, onSelect }) => (
+export default connect(({ items }) => ({ items }), (dispatch) => ({
+  moveItem: (data) => dispatch(moveItem(data)),
+  grabItem: (data) => dispatch(grabItem(data))
+}))(FormItems)
+
+const FormItemsList = SortableContainer(({ items }) => (
   <div>
     {items.map((item, index) => (
       <SortableFormItem
         key={item.id}
         index={index}
-        onSelect={onSelect}
         item={item} />
     ))}
   </div>

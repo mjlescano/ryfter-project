@@ -19,3 +19,8 @@ export const selectItem = ({ id }) => ({
   type: 'SELECT_ITEM',
   payload: { id }
 })
+
+export const updateItem = (data) => ({
+  type: 'UPDATE_ITEM',
+  payload: data
+})
