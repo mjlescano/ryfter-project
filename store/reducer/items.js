@@ -40,6 +40,10 @@ const reducers = {
   UPDATE_ITEM: (state, { payload }) => state.map((item, i) => {
     if (item.id !== payload.id) return item
     return { ...item, ...payload }
+  }),
+
+  REMOVE_ITEM: (state, { payload: { id } }) => state.filter((item, i) => {
+    return item.id !== id
   })
 }
 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 import { SortableHandle } from 'react-sortable-hoc'
-import { selectItem } from '../../store/actions'
+import { selectItem, removeItem } from '../../store/actions'
 import Section from './section'
 
 const kinds = {
@@ -10,7 +10,8 @@ const kinds = {
 
 const FormItem = ({
   item,
-  selectItem
+  selectItem,
+  removeItem
 }) => {
   const {
     kind,
@@ -28,7 +29,8 @@ const FormItem = ({
     { selected }
   )
 
-  const handleClick = () => selectItem({ id: item.id })
+  const handleClick = () => !selected && selectItem({ id: item.id })
+  const handleRemove = () => removeItem({ id: item.id })
 
   return (
     <div className={className} onClick={handleClick}>
@@ -38,6 +40,7 @@ const FormItem = ({
           padding-top: 1rem;
           padding-bottom: 1rem;
           border-left: 3px solid transparent;
+          border-right: 3px solid transparent;
           transition:
             border-color .15s ease-in-out,
             box-shadow .6s cubic-bezier(.25,.8,.25,1),
@@ -48,7 +51,10 @@ const FormItem = ({
 
         .form-item.grabbed :global(.grabber),
         .form-item.selected :global(.grabber),
-        .form-item:hover :global(.grabber) {
+        .form-item:hover :global(.grabber),
+        .form-item.grabbed .remove-item,
+        .form-item.selected .remove-item,
+        .form-item:hover .remove-item {
           opacity: 1;
         }
 
@@ -62,20 +68,49 @@ const FormItem = ({
 
         .form-item.selected {
           border-left-color: #575B6B;
+          border-right-color: #575B6B;
         }
 
         .form-item:not(.selected) {
           cursor: pointer;
         }
+
+        .remove-item {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          padding: .5rem;
+          font-size: 1.4rem;
+          line-height: 1rem;
+          background-color: transparent;
+          color: #A4A5AD;
+          cursor: pointer;
+          transition:
+            opacity .3s ease-in-out,
+            color .3s ease-in-out;
+          transform: translateY(-1.2rem);
+          opacity: 0;
+        }
+
+        .remove-item:hover {
+          color: #D51F2C;
+        }
       `}</style>
       <Grabber />
       <Item item={item} />
+      <button
+        type='button'
+        className='remove-item'
+        onClick={handleRemove}>
+        &times;
+      </button>
     </div>
   )
 }
 
 export default connect(null, (dispatch) => ({
-  selectItem: (data) => dispatch(selectItem(data))
+  selectItem: (data) => dispatch(selectItem(data)),
+  removeItem: (data) => dispatch(removeItem(data))
 }))(FormItem)
 
 const Grabber = SortableHandle(({ active }) => (

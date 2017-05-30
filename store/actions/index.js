@@ -24,3 +24,8 @@ export const updateItem = (data) => ({
   type: 'UPDATE_ITEM',
   payload: data
 })
+
+export const removeItem = ({ id }) => ({
+  type: 'REMOVE_ITEM',
+  payload: { id }
+})
