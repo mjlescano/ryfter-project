@@ -1,5 +1,5 @@
 import { nextConnect } from '../store'
-import { addSection, moveItem, grabItem } from '../store/actions'
+import { addSection, moveItem, grabItem, selectItem } from '../store/actions'
 import Layout from '../components/layout'
 import Title from '../components/title'
 import Button from '../components/button'
@@ -13,7 +13,8 @@ const Form = ({
   items,
   addSection,
   moveItem,
-  grabItem
+  grabItem,
+  selectItem
 }) => (
   <Layout>
     <Title>Self-Assesment Form</Title>
@@ -29,6 +30,7 @@ const Form = ({
         <FormItems
           onMove={moveItem}
           onGrab={grabItem}
+          onSelect={selectItem}
           items={items} />
         <FormActions addSection={addSection} />
         <hr />
@@ -43,5 +45,6 @@ const Form = ({
 export default nextConnect((state) => state, (dispatch) => ({
   addSection: () => dispatch(addSection()),
   moveItem: (data) => dispatch(moveItem(data)),
-  grabItem: (data) => dispatch(grabItem(data))
+  grabItem: (data) => dispatch(grabItem(data)),
+  selectItem: (data) => dispatch(selectItem(data))
 }))(Form)

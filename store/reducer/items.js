@@ -19,13 +19,22 @@ const reducers = {
   MOVE_ITEM: (state, { payload: { oldIndex, newIndex } }) => {
     const items = arrayMove(state, oldIndex, newIndex)
     const item = items[newIndex]
-    items[newIndex] = { ...item, grabbing: false }
+    items[newIndex] = { ...item, grabbed: false }
     return items
   },
 
   GRAB_ITEM: (state, { payload: { index } }) => state.map((item, i) => {
     if (index !== i) return item
-    return { ...item, grabbing: true }
+    return { ...item, grabbed: true }
+  }),
+
+  SELECT_ITEM: (state, { payload: { id } }) => state.map((item, i) => {
+    if (item.id !== id) {
+      if (item.selected) return { ...item, selected: false }
+      return item
+    }
+
+    return { ...item, selected: true }
   })
 }
 
