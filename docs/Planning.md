@@ -65,7 +65,6 @@ The user will land on the form creation page, and:
 - [ ] A Question could be of any type and have the options defined at the [requirements](ryfter-project.pdf)
 - [ ] The form should be submittable, but must have at least 1 Question
   * The submit event should POST the form data to https://requestb.in
-- [ ] The Redux state should be saved on LocalStorage on every state change
 - [ ] On SubmitSuccess, the user should be directed to a success page
 
 
