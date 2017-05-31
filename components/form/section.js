@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
-import { updateItem } from '../../store/actions'
+import { updateItem, selectItem } from '../../store/actions'
 import AutoGrowTextarea from '../autogrow-textarea'
 
 const FormSection = ({
   item,
-  updateItem
+  updateItem,
+  handleSelect
 }) => {
   const { title } = item
 
@@ -44,12 +45,16 @@ const FormSection = ({
         value={title}
         maxLength={80}
         onChange={handleChange}
+        onFocus={handleSelect}
         autoFocus
         required />
     </div>
   )
 }
 
-export default connect(null, (dispatch) => ({
-  updateItem: (data) => dispatch(updateItem(data))
+export default connect(null, (dispatch, props) => ({
+  updateItem: (data) => dispatch(updateItem(data)),
+  handleSelect: (data) => {
+    return !props.item.selected && dispatch(selectItem({ id: props.item.id }))
+  }
 }))(FormSection)

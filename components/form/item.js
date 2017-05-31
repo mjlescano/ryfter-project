@@ -12,8 +12,8 @@ const kinds = {
 
 const FormItem = ({
   item,
-  selectItem,
-  removeItem
+  handleSelect,
+  handleRemove
 }) => {
   const {
     kind,
@@ -31,11 +31,8 @@ const FormItem = ({
     { selected }
   )
 
-  const handleClick = () => !selected && selectItem({ id: item.id })
-  const handleRemove = () => removeItem({ id: item.id })
-
   return (
-    <div className={className} onClick={handleClick}>
+    <div className={className} onClick={handleSelect}>
       <style jsx>{`
         .form-item {
           position: relative;
@@ -80,7 +77,7 @@ const FormItem = ({
 
         .remove-item {
           position: absolute;
-          top: 50%;
+          top: .5rem;
           right: 0;
           padding: .5rem;
           font-size: 1.4rem;
@@ -91,7 +88,6 @@ const FormItem = ({
           transition:
             opacity .3s ease-in-out,
             color .3s ease-in-out;
-          transform: translateY(-1.2rem);
           opacity: 0;
         }
 
@@ -111,9 +107,11 @@ const FormItem = ({
   )
 }
 
-export default connect(null, (dispatch) => ({
-  selectItem: (data) => dispatch(selectItem(data)),
-  removeItem: (data) => dispatch(removeItem(data))
+export default connect(null, (dispatch, props) => ({
+  handleRemove: (data) => dispatch(removeItem({ id: props.item.id })),
+  handleSelect: (data) => {
+    return !props.item.selected && dispatch(selectItem({ id: props.item.id }))
+  }
 }))(FormItem)
 
 const Grabber = SortableHandle(({ active }) => (
