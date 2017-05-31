@@ -5,6 +5,15 @@ export const addSection = (data) => ({
   }
 })
 
+export const addQuestion = (data) => ({
+  type: 'ADD_ITEM',
+  payload: {
+    kind: 'question',
+    questionType: 'short-text',
+    required: true
+  }
+})
+
 export const moveItem = ({ oldIndex, newIndex }) => ({
   type: 'MOVE_ITEM',
   payload: { oldIndex, newIndex }

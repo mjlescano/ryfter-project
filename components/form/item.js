@@ -2,10 +2,12 @@ import { connect } from 'react-redux'
 import classNames from 'classnames'
 import { SortableHandle } from 'react-sortable-hoc'
 import { selectItem, removeItem } from '../../store/actions'
-import Section from './section'
+import FormSection from './section'
+import FormQuestion from './question'
 
 const kinds = {
-  section: Section
+  section: FormSection,
+  question: FormQuestion
 }
 
 const FormItem = ({
