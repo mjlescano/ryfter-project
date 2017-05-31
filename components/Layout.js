@@ -45,6 +45,27 @@ export default (props) => (
         color: #F1F2F4;
       }
 
+      ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: #A4A5AD;
+      }
+
+      :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+         color: #A4A5AD;
+         opacity: 1;
+      }
+      ::-moz-placeholder { /* Mozilla Firefox 19+ */
+         color:    #A4A5AD;
+         opacity:  1;
+      }
+
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+         color: #A4A5AD;
+      }
+
+      ::-ms-input-placeholder { /* Microsoft Edge */
+         color: #A4A5AD;
+      }
+
       img {
         max-width: 100%;
         vertical-align: middle;

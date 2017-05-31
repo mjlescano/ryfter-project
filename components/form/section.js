@@ -52,7 +52,9 @@ const FormSection = ({
         placeholder='Section Title'
         value={title}
         maxLength={80}
-        onChange={handleChange} />
+        onChange={handleChange}
+        autoFocus
+        required />
     </div>
   )
 }

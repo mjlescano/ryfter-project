@@ -54,7 +54,8 @@ const FormItem = ({
         .form-item:hover :global(.grabber),
         .form-item.grabbed .remove-item,
         .form-item.selected .remove-item,
-        .form-item:hover .remove-item {
+        .form-item:hover .remove-item,
+        .remove-item:focus {
           opacity: 1;
         }
 

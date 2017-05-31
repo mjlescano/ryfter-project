@@ -10,7 +10,7 @@ const FormActions = ({ addSection }) => (
       }
 
       .form-actions :global(button) {
-        margin: 0 5px;
+        margin: .3125rem;
       }
     `}</style>
     <Button onClick={addSection}>Add section</Button>
