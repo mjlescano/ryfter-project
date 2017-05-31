@@ -11,3 +11,9 @@ export const initStore = (initialState) => {
 }
 
 export const nextConnect = nextConnectRedux(initStore)
+
+export const hasQuestions = (items) => {
+  return items.find((item) => {
+    return item.kind === 'question' && item.title
+  }) !== undefined
+}

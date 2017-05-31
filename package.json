@@ -9,9 +9,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
+    "dev": "node .",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node ."
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,10 @@
   },
   "homepage": "https://github.com/mjlescano/ryfter-project#readme",
   "dependencies": {
+    "body-parser": "~1.17.2",
     "classnames": "~2.2.5",
+    "express": "~4.15.3",
+    "isomorphic-fetch": "~2.2.1",
     "next": "~3.0.0-beta6",
     "next-connect-redux": "~0.1.5",
     "next-redux-wrapper": "~1.1.2",
